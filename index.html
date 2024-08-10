@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meriden Food Guide</title>
+    <link rel="stylesheet" href="Indexpagestyles.css">
+</head>
+<body>
+    <div id="navBar">
+        <div id="brandTitle">Meriden Food Guide</div>
+        <span id="menuIcon">&#9776;</span>
+        <ul id="navLinks">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+
+    <div id="searchForm">
+        <input type="text" id="foodInput" placeholder="Search for food items...">
+        <button id="searchButton" onclick="goToFoodPage()">Search</button>
+    </div>
+
+    <div class="background-image"></div>
+
+    <div class="section">
+        <h2>Explore Delicious Food</h2>
+        <div class="food-gallery">
+            <img src="1.jpg" alt="Food 1"> <!-- Replace with actual image URLs -->
+            <img src="2.jpg" alt="Food 2">
+            <img src="3.jpg" alt="Food 3">
+        </div>
+    </div>
+
+    <div class="section puzzle-section">
+        <h2>Interactive Food Puzzle</h2>
+        <p>Test your knowledge with a fun food puzzle!</p>
+        <button onclick="alert('Puzzle coming soon!')">Start Puzzle</button>
+    </div>
+
+    <footer>
+        <p>Contact Us: info@meridenfoodguide.com | Phone: +123 456 7890</p>
+        <p>&copy; 2024 Meriden Food Guide. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function goToFoodPage() {
+            window.location.href = 'food.html';  // Update with the actual filename if different
+        }
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('menuIcon').onclick = function() {
+                var navLinks = document.getElementById('navLinks');
+                if (navLinks.style.display === 'block') {
+                    navLinks.style.display = 'none';
+                } else {
+                    navLinks.style.display = 'block';
+                }
+            };
+        });
+    </script>
+    
+</body>
+</html>
