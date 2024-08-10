@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Choice</title>
+    <link rel="stylesheet" href="FirstPageStyles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="hidden-nav">
+        <div class="brand-title" id="brand-title"></div> <!-- Dynamic Brand Title -->
+        <div class="menu-toggle" onclick="toggleMenu()">
+            &#9776;
+        </div>
+        <ul id="nav-menu" class="nav-links">
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Hero Section for Immersive Image Effect -->
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1>Welcome to Food Choice</h1>
+            <p>This website guides you towards nutritious choices, offering personalized meal ideas that align with your dietary needs and wellness goals.</p>
+        </div>
+    </div>
+
+    <!-- Main Content Section -->
+    <div class="container" id="services">
+        <div class="main-content">
+            <div class="header">
+                <h1>Explore Healthy Eating</h1>
+                <p>Discover a variety of nutritious foods that are essential for your diet. We provide personalized meal suggestions to help you achieve your health goals.</p>
+                <button class="get-started" onclick="goToSearchPage()">GET STARTED</button>
+            </div>
+            <div class="food-card">
+                <div class="image"></div>
+                <div class="content">
+                    <h2>Nutritious Recipes</h2>
+                    <p>Explore a collection of recipes<br>Balanced Meals<br>Healthy Snacks<br>Dietary Preferences</p>
+                    <button class="view-recipes">VIEW RECIPES</button>
+                </div>
+                <div class="navigation">
+                    <a href="#">Nutrition Tips</a>
+                    <a href="#">Login</a>
+                    <button class="free-consultation">GET A DIET PLAN</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Us Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>We are dedicated to helping you make nutritious food choices...</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>Reach out to us for personalized meal plans and dietary advice...</p>
+        </div>
+    </section>
+
+    <script>
+        // Show the navbar after scrolling
+        window.onscroll = function() {
+            var navbar = document.getElementById("navbar");
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                navbar.classList.remove("hidden-nav");
+            } else {
+                navbar.classList.add("hidden-nav");
+            }
+        };
+
+        // Toggle the menu display
+        function toggleMenu() {
+            var navMenu = document.getElementById("nav-menu");
+            navMenu.classList.toggle("show");
+        }
+
+        // Set the dynamic brand title
+        document.addEventListener("DOMContentLoaded", function() {
+            const brandTitle = document.getElementById("brand-title");
+            const brandName = "Food Choice";
+            brandTitle.textContent = brandName;
+        });
+
+        // Function to go to the search page
+        function goToSearchPage() {
+            window.location.href = 'index.html';  // Update with the actual filename if different
+        }
+    </script>
+</body>
+</html>
