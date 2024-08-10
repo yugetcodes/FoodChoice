@@ -1,0 +1,116 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff7f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#navBar {
+    background-color: #ff6347;
+    padding: 15px;
+    color: white;
+    text-align: left;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#brandTitle {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+#menuIcon {
+    display: inline-block;
+    cursor: pointer;
+}
+#navLinks {
+    display: flex;
+    margin: 0;
+}
+
+
+#navLinks li {
+    margin-left: 15px; /* Reduced margin */
+    list-style: none;
+    font-size: 0.9em; /* Adjusted font size */
+}
+
+#navLinks a {
+    color: white;
+    text-decoration: none;
+    padding: 10px; /* Reduced padding for the links */
+}
+
+#navLinks a:hover {
+    color: #e5533d;
+}
+
+#searchForm {
+    margin-top: 80px;
+    text-align: center;
+}
+
+#foodInput {
+    padding: 15px;
+    width: 300px;
+    border: 2px solid #ff6347;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+#searchButton {
+    background-color: #ff6347;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#searchButton:hover {
+    background-color: #e5533d;
+}
+
+.background-image {
+    height: 300px;
+    background: url('background.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.section {
+    padding: 20px;
+    text-align: center;
+}
+
+.food-gallery img {
+    width: 200px;
+    height: 150px;
+    margin: 10px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.puzzle-section {
+    margin-top: 20px;
+}
+
+footer {
+    background-color: #ff6347;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
