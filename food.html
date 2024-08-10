@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f2ff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #ff6600;
+            margin-top: 20px;
+        }
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            max-width: 1200px;
+            width: 100%;
+            margin-top: 20px;
+            padding: 20px;
+        }
+        .food-details {
+            flex: 1;
+            padding: 20px;
+            background-color: #ffffe6;
+            border-radius: 10px;
+            margin-right: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .food-details h2 {
+            color: #0066cc;
+        }
+        .food-details p {
+            color: #333;
+        }
+        .food-details ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .food-details ul li {
+            background-color: #e6ffe6;
+            border: 1px solid #b3ffb3;
+            border-radius: 5px;
+            padding: 5px;
+            margin: 5px 0;
+        }
+        .images {
+            flex: 1;
+            padding: 20px;
+            background-color: #ffffe6;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .images img {
+            width: 150px;
+            height: 150px;
+            margin: 10px;
+            border: 3px solid #ff6600;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="foodTitle"></h1>
+    <div class="content">
+        <div class="food-details" id="foodDetails"></div>
+        <div class="images" id="imageResults"></div>
+    </div>
+    <script>
+        const api_key_usda = '3NGWyqp2ZYXoTiWId0bg02xg9yCEdBcWDepkbxKO';
+        const api_key_pexels = 'cPUZQppAlavdUu23Tdb4W5pzMII1pEsUD14igtdyz4OZ5X8JNijyfLY2';
+        const params = new URLSearchParams(window.location.search);
+        const query = params.get('query');
+
+        document.getElementById('foodTitle').innerText = query;
+
+        // Fetch food details from USDA
+        fetch(`https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${api_key_usda}&query=${query}&pageSize=5`)
+            .then(response => response.json())
+            .then(data => {
+                const foodDetailsDiv = document.getElementById('foodDetails');
+                if(data.foods.length > 0) {
+                    data.foods.forEach(food => {
+                        const foodDiv = document.createElement('div');
+                        foodDiv.innerHTML = `
+                            <h2>${food.description}</h2>
+                            <p><strong>Food ID:</strong> ${food.fdcId}</p>
+                            <p><strong>Publication Date:</strong> ${food.publicationDate}</p>
+                            <h3>Nutrients:</h3>
+                            <ul>
+                                ${food.foodNutrients.map(nutrient => `<li>${nutrient.nutrientName}: ${nutrient.value} ${nutrient.unitName}</li>`).join('')}
+                            </ul>
+                        `;
+                        foodDetailsDiv.appendChild(foodDiv);
+                    });
+                } else {
+                    foodDetailsDiv.innerHTML = '<p>No results found.</p>';
+                }
+            })
+            .catch(error => {
+                document.getElementById('foodDetails').innerText = 'Error fetching data.';
+                console.error('Error:', error);
+            });
+
+        // Fetch images from Pexels
+        fetch(`https://api.pexels.com/v1/search?query=${query}`, {
+            headers: {
+                Authorization: api_key_pexels
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                const imageResultsDiv = document.getElementById('imageResults');
+                if (data.photos.length > 0) {
+                    data.photos.forEach(photo => {
+                        const imgElement = document.createElement('img');
+                        imgElement.src = photo.src.medium;
+                        imgElement.alt = query;
+                        imageResultsDiv.appendChild(imgElement);
+                    });
+                } else {
+                    imageResultsDiv.innerHTML = '<p>No images found.</p>';
+                }
+            })
+            .catch(error => {
+                document.getElementById('imageResults').innerText = 'Error fetching images.';
+                console.error('Error:', error);
+            });
+    </script>
+</body>
+</html>
