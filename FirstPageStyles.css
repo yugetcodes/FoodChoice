@@ -1,0 +1,283 @@
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Navigation Bar Styles */
+nav {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between; /* Adjusted to align items */
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: top 0.3s ease-in-out;
+}
+
+.hidden-nav {
+    top: -70px;
+}
+
+/* Dynamic Brand Title Styles */
+.brand-title {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+/* Style for the menu icon (only for mobile view) */
+.menu-toggle {
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px 20px;
+    display: none; /* Initially hidden */
+}
+
+/* Hidden menu initially (for mobile view) */
+.nav-links {
+    list-style: none;
+    display: flex; /* Display links inline on wider screens */
+    padding: 0;
+    margin: 0;
+    gap: 20px; /* Space between links */
+}
+
+/* Show menu when toggled (for mobile view) */
+.nav-links.show {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+/* Style the individual links */
+.nav-links li a {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Hover effect for the links */
+.nav-links li a:hover {
+    color: #ff6b6b;
+}
+
+/* Responsive for wider screens */
+@media(min-width: 768px) {
+    .nav-links {
+        display: flex;
+        flex-direction: row;
+    }
+    .menu-toggle {
+        display: none;
+    }
+}
+
+/* Responsive for narrower screens (e.g., mobile) */
+@media(max-width: 767px) {
+    .menu-toggle {
+        display: block; /* Show menu icon */
+    }
+    .nav-links {
+        display: none; /* Hide links initially */
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        flex-direction: column;
+        gap: 0;
+    }
+    .nav-links.show {
+        display: flex; /* Show links when toggled */
+    }
+}
+
+/* Hero Section Styles */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full height */
+    background-image: url('Background1.jpg'); /* Add your image URL */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Black overlay with 40% opacity */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Place content above the overlay */
+    max-width: 600px;
+    padding: 20px;
+}
+
+.hero-content h1 {
+    font-size: 3em;
+    margin: 0 0 20px;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+}
+
+/* Main Content Styles */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    background: #f2f2f2;
+}
+.container h2 {
+    margin-bottom: 100px; /* Adds some space between the heading and paragraph */
+}
+
+.container p {
+    max-width: 300px; /* Optional: limits the width of the paragraph for better readability */
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 1200px;
+    background: #ffffff;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.header p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    color: #666;
+}
+
+.get-started {
+    padding: 10px 20px;
+    font-size: 1em;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.get-started:hover {
+    background: #fff;
+    color: #000;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+
+/* Food Card Styles */
+.food-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff5f5;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+}
+
+.food-card .image {
+    background-image: url('coachingcardimg.jpg'); /* Add your image URL */
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.food-card h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #ff6666;
+}
+
+.food-card p {
+    font-size: 1.5em;
+    color: #ff9999;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.view-recipes {
+    padding: 10px 20px;
+    font-size: 1em;
+    background: #ff6666;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Navigation Styles */
+.navigation {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 15px;
+}
+
+.navigation a, .free-consultation {
+    font-size: 1em;
+    color: #ff9999;
+    text-decoration: none;
+}
+
+.free-consultation {
+    background: #fff5f5;
+    padding: 5px 10px;
+    border: 1px solid #ff9999;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+}
